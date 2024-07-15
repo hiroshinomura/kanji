@@ -123,18 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'ja-JP';
+            utterance.rate = 2;  // 音声出力のスピードを2倍に設定
             speechSynthesis.speak(utterance);
         } else {
             console.error("This browser does not support speech synthesis.");
         }
     }
 
-    answerElement.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            checkAnswer();
-        }
-    });
-
-    submitButton.addEventListener('click', checkAnswer);
-    newQuestion();
-});
